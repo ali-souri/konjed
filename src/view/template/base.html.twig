@@ -1,0 +1,185 @@
+{% set index_address = system_info.index_address %}
+{% set sourse_address = system_info.view_sourse_address %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="{{sourse_address}}/css/index.css">
+<link rel="stylesheet" type="text/css" href="{{sourse_address}}/css/bootstrap.css">
+
+{% block page_stylesheets %}{% endblock %}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-73116234-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<script type="text/javascript" src="{{sourse_address}}/js/jquery-2.1.4.min.js"></script>
+<script id="search-result-template">
+    <div class="searchresult" style="display:block;">
+        <div class=" searchresultimage  rtlh">
+            <img src="{-{image_address}-}" alt="">
+        </div>
+        <div class="searchresulttext ">
+                <a href="{{index_address}}/page/postview/id/{-{id}-}">
+                <div class="searchtexttitle">
+                    {-{headline}-}
+                </div>
+                <div class="searchtextdetail">
+                    {-{title}-}
+                </div>
+                
+            </a>
+        </div>
+        <div class="searchresultdate searcharrow_box" >
+            خرداد <br> 1 <br> 1394
+        </div>
+    </div>
+</script>
+<script type="text/javascript" src="{{sourse_address}}/js/search.js"></script>
+{% block page_javascripts %}{% endblock %}
+<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <div class="sidebar" >
+        <div class="sidebar-buttons" >
+            <a  class="sidebar-menu-button inactive" data-containerclass="menu-container">
+                            <img src="{{sourse_address}}/images/menu-icon-org.png" alt="">
+                            
+
+             </a>
+             <a  class="sidebar-search-button inactive" data-containerclass="search-container">
+                            <img src="{{sourse_address}}/images/search-icon.png" alt="">
+                            
+                            
+
+             </a>
+             <a  class="sidebar-instagram-button inactive" data-containerclass="www.instagram.com\dr.mohsenesmaeili">
+                            <img src="{{sourse_address}}/images/instagram-icon.png" alt="">
+                            
+
+             </a>
+             <a  class="sidebar-telegram-button inactive" data-containerclass="telegram.me\mohsenesmaeili_ir">
+                            <img src="{{sourse_address}}/images/telegram-icon.png" alt="">
+                           
+
+             </a>
+        </div>
+        <div class="sidebar-containers">
+            <div class="menu-container">
+                <ul class="first-side-list">
+                    <li><a href="{{index_address}}">صفحه اصلی</a></li>
+                    <li><a href="{{index_address}}/page/nahjolbalaghe">نهج البلاغه</a>
+                    <li><a href="{{index_address}}/page/memo">یادداشت ها</a></li>
+                    <li><a href="{{index_address}}/page/speeches">سخنرانی و همایش</a></li>
+                    <li><a href="{{index_address}}/page/books">کتاب ها</a></li>
+                    <li><a href="{{index_address}}/page/articles">مقالات</a>
+                        {# <ul>
+                            <li><a href="#">فقه و حقوق</a></li>
+                            <li><a href="#">ارتباطات و رسانه</a></li>
+                            <li><a href="#">فرهنگ و معارف</a></li>
+                            <li><a href="#">سیاست و جامعه</a></li>
+                        </ul> #}
+                    </li>
+                    <li><a href="{{index_address}}/page/courses">مجموعه دروس</a>
+                         {# <ul>
+                            <li><a href="#">دروس حقوق اساسی</a></li>
+                            <li><a href="#">دروس فقه و اصول</a></li>
+                            <li><a href="#">جلسات نهج البلاغه</a></li>
+                        </ul> #}
+                    </li>
+                    <li><a href="{{index_address}}/page/gallery">گالری تصاویر</a></li>
+                    <li><a href="{{index_address}}/page/students">امور دانشجویان</a></li>
+                    <li><a href="{{index_address}}/page/contact">تماس با من</a></li>
+                    <li><a href="{{index_address}}/page/postview/id/2">زندگی نامه</a></li>
+                    <li><a href="{{index_address}}/page/postview/id/1">پیوند های مرتبط</a></li>
+                </ul>
+            </div>
+            <div class="search-container">
+                <div class="searchform">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <div class="row ">
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 rtlh">
+                                    <input type="search" class="form-control " id="search" >
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <a class="search-init" data-indexaddress="{{index_address}}"><img src="{{sourse_address}}/images/sidebar-search-icon.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div> 
+                <div class="resultcounts" style="display:none;">
+                    تعداد <span id="search-count">0</span> مورد یافت شد.
+                </div>
+                {# <div class="searchresult">
+                    <div class=" searchresultimage  rtlh">
+                        <img src="{{sourse_address}}/images/searchresultimage.png" alt="">
+                    </div>
+                    <div class="searchresulttext "><a href="#">
+                        <div class="searchtexttitle">
+                            از ابتدا موضع موافق یا مخالف   گرفتن، کار  انسان با ایمان نیست
+                        </div>
+                        <div class="searchtextdetail">
+                          در شرح و تفسیر نامه 69 نهج البلاغه به این سه جمله رسیدیم که  فَکَفَی بِذلِکَ کَذِباً، وَلاَ تَرُدَّ عَلَی النَّاسِ کُلَّ مَا حَدَّثُوکَ بِهِ، فَکَفَی بِذلِکَ جَهْلاً»...
+                        </div>
+                        
+                    </a></div>
+                    <div class="searchresultdate searcharrow_box" >
+                        خرداد <br> 1 <br> 1394
+                    </div>
+                </div> #}
+
+                {# <div class="searchpagenumbers">
+                    <a  href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a class="activeserachpagenumber" href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                </div> #}
+            </div>
+            <div class="gallery-container">gallery
+                
+            </div>
+            <div class="map-container">
+
+            </div>
+        </div>
+    </div>
+<header class="header">
+    <img src="{{sourse_address}}/images/header.jpg" alt="">
+</header>
+{% block main_content %}{% endblock %}
+<footer class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:95px;">
+    <div class="footer ">
+       
+        
+        <div class="flinks">
+        <a href="{{index_address}}">صفحه اصلی</a>|
+        <a href="{{index_address}}/page/nahjolbalaghe">نهج البلاغه</a>|
+        <a href="{{index_address}}/page/memo">یادداشت ها</a>|
+        <a href="{{index_address}}/page/speeches">سخنرانی و همایش</a>|
+        <a href="{{index_address}}/page/books">کتاب ها</a>|
+        <a href="#">خاطرات</a>|
+        <a href="{{index_address}}/page/articles">مقالات</a>|
+        <a href="{{index_address}}/page/courses">مجموعه دروس</a>|
+        <a href="{{index_address}}/page/gallery">گالری تصاویر</a>|
+        <a href="{{index_address}}/page/students">امور دانشجویان</a>|
+        <a href="{{index_address}}/page/contact">تماس با من</a>|
+        <a href="#">پیوند های مرتبط</a>|
+        </div>
+         <span>کلیه حقوق این تارنما محفوظ است.  <br>استفاده از مطالب به شرط ذکر منبع آزاد است  </span>
+        
+    </div>
+    <div class="endline">
+    </div>
+</footer>
+
+</body>
+</html>

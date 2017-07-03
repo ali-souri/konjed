@@ -1,0 +1,86 @@
+{% extends "base.html.twig" %}
+{% block page_stylesheets %}
+<style type="text/css">
+    span.item-detail *{
+        font-size: 10px !important;
+        margin: 0 !important;
+        color: #a9abab !important;
+        width: 100% !important;
+        line-height: 15px !important;
+    }
+</style>
+{% endblock %}
+{% block page_javascripts %}
+<script type="text/javascript" src="{{sourse_address}}/js/jquery.lbscroller.js"></script>
+<script type="text/javascript" src="{{sourse_address}}/js/thumbnail-scroller.js"></script>
+<script type="text/javascript" src="{{sourse_address}}/js/script.js"></script>
+{% endblock %}
+{% block title %}صفحه اصلی{% endblock %}
+{% block main_content %}
+<div class="container">
+	<div class="sliderbox">
+        <div class="slider">
+            <div class="ws_images">
+                <ul>
+                {% for slideritem in slider %}
+                    <li class="slideritem-{{loop.index}} sliderstart"><img src="{{slideritem.image_address}}" alt="slideritem ({{ loop.index }})"  id="wows1_0"/>
+                        <div class="slidertext">
+                            <p class="slidertexttitle">{{slideritem.slidertexttitle}}</p>
+                            <p class="slidertextcaption">{{slideritem.slidertextcaption}}</p>
+                            <p class="slidertextdetail">{{slideritem.slidertextdetail|raw}}</p>
+                            <p class="slidertextdate"><span class="slidertexttag"></span>{{slideritem.slidertextdate|replace({'<br/>':""})|raw}}</p>
+                            <a href="{{slideritem.link_address}}" target="_blanck" >ادامه مطلب</a>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="ws_thumbs">
+                <div class="ws-bullets">
+                    {% for slideritem in slider %}
+                        <a href="#" data-title="slideritem-{{loop.index}}"></a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+<div class="thumbnail-scroller">
+
+<div class="scroller">
+    <ul>
+    {% for post in posts %}
+        <li onclick="window.location.href='{{index_address}}/page/postview/id/{{post.id}}'">
+            <div class="scrolleritem"><img src="{{post.image_address}}" alt="item1" title="item1"  />
+                <div class="itemtext">
+                    <span class="item-summary">
+                        {{post.headline|slice(0, 40)}}
+                    </span><br/>
+                    <span class="item-title">
+                        {{post.title|slice(0, 70)}}...
+                    </span><br/>
+                    <span class="item-detail">
+                        {{tools.html_cut(post.content,300)|raw}}...
+                        {#{{post.content|slice(0, 100)|raw}}...#}
+                    </span><br/><hr/>
+                    <span class="item-date">
+                        {{post.time|raw}}
+                    </span><br/>
+                    <span class="item-tag">
+                        {% for page in pages %}
+                            {% if page.id==post.page_id %}
+                                {{page.name}}
+                            {% endif %}
+                        {% endfor %}
+                    </span><br/>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+<a href="#" class="scroller-arrow sa-left"><img src="{{sourse_address}}/images/left.png" alt=""></a>
+<a href="#" class="scroller-arrow sa-right"><img src="{{sourse_address}}/images/right.png" alt=""></a>
+
+</div>
+{% endblock %}
